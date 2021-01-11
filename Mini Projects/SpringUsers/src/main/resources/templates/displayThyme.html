@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
+<body>
+   <div th:if="${not #lists.isEmpty(UserList)}">
+    <h2>List of Users</h2>
+    <table class ="styled-table">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        <tr th:each="UserList : ${UserList}">
+            <td th:text="${UserList.id}"></td>
+            <td th:text="${UserList.name}"></td>
+            <td th:text="${UserList.email}"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

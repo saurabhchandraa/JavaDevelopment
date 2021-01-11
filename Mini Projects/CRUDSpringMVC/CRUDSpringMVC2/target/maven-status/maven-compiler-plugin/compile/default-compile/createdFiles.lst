@@ -1,0 +1,10 @@
+crudSpring\dao\UserDaoImpl$1.class
+crudSpring\dao\UserDaoImpl$UserMapper.class
+crudSpring\config\WebConfig.class
+crudSpring\service\UserService.class
+crudSpring\service\UserServiceImpl.class
+crudSpring\model\User.class
+crudSpring\dao\UserDao.class
+crudSpring\controller\UserController.class
+crudSpring\dao\UserDaoImpl.class
+crudSpring\config\WebInitializer.class
