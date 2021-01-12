@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(path="/demo")
+@RequestMapping(path="/")
 public class UserController {
 	
 	@Autowired
@@ -31,13 +32,18 @@ public class UserController {
 		 return "displayThyme";
 	}
 	
-	@PostMapping("/add")
-	public void addUser(@ModelAttribute("newUser") User newUser) {
-//	    User u = new User();
-//	    u.setName(name);
-//	    u.setEmail(email);
-		userRep.save(newUser);
+	@GetMapping("/add")
+	public String add(Model model)
+	{
+		model.addAttribute("UserList", new User());
+		return "new";
+	}
+	
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public String saveUser(@ModelAttribute("UserList") User UserList) {
 		
+	userRep.save(UserList);
+	return "redirect:/all";	
 	}
 
 }

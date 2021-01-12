@@ -6,14 +6,17 @@
     <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
 <body>
-   <div th:if="${not #lists.isEmpty(UserList)}">
     <h2>List of Users</h2>
-    <table class ="styled-table">
+    <h2><a th:href="@{'/add'}">Add New User</a></h2>
+   <div th:if="${not #lists.isEmpty(UserList)}" class="table-wrapper">
+    <table class="fl-table">
+        <thead>
         <tr>
             <th>Id</th>
             <th>Name</th>
             <th>Email</th>
         </tr>
+        </thead>
         <tr th:each="UserList : ${UserList}">
             <td th:text="${UserList.id}"></td>
             <td th:text="${UserList.name}"></td>
