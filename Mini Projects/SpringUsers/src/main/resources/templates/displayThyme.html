@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>List of Users</h2>
-    <h2><a th:href="@{'/add'}">Add New User</a></h2>
+    <h2><a th:href="@{'/add'}"> Add New User</a></h2>
    <div th:if="${not #lists.isEmpty(UserList)}" class="table-wrapper">
     <table class="fl-table">
         <thead>
@@ -15,12 +15,16 @@
             <th>Id</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Update</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tr th:each="UserList : ${UserList}">
             <td th:text="${UserList.id}"></td>
             <td th:text="${UserList.name}"></td>
             <td th:text="${UserList.email}"></td>
+            <td><a th:href ="@{'/update/' +${UserList.id}}">Update User</a></td>
+            <td><a th:href ="@{'/delete/' +${UserList.id}}">Delete User</a></td>
         </tr>
     </table>
 </div>

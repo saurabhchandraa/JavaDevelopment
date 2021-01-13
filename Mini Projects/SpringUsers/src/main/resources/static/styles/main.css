@@ -6,11 +6,11 @@
 body{
     font-family: Helvetica;
     -webkit-font-smoothing: antialiased;
-    background: rgba( 71, 147, 227, 1);
+     background: rgba( 71, 147, 227, 1);
 }
 h2{
     text-align: center;
-    font-size: 18px;
+    font-size: 22px;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: white;
