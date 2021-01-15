@@ -15,10 +15,8 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private Integer id;
-	
-	
+		
 	private String name;
-	
 	private String email;
 	
 	public Integer getId() {
@@ -29,8 +27,7 @@ public class User {
 	}
 	
 	public User() {
-	}
-	
+	}	
 	public User(Integer id, String name, String email) {
 		super();
 		this.id = id;
@@ -49,10 +46,7 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	
-	
-
+	}	
 }
 
 

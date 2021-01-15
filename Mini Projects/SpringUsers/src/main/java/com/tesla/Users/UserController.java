@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -23,16 +24,15 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserController {
 	
 	@Autowired
-	private UserRepository userRep;
+	private UserService userService;
 	
 	
 	@GetMapping(path="/all")
 	public String getAllUsers(Model model) {
 		
-		List<User> UserList = (List<User>) userRep.findAll();
-		model.addAttribute("UserList",UserList);
-		//return (List<User>) userRep.findAll();		
-		 return "displayThyme";
+		List<User> UserList = userService.getAllUsers();		
+		model.addAttribute("UserList",UserList);		
+		return "displayThyme";
 	}
 	
 	@GetMapping("/add")
@@ -43,9 +43,8 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveUser(@ModelAttribute("UserList") User UserList) {
-		
-	userRep.save(UserList);
+	public String saveUser(@ModelAttribute("UserList") User UserList) {		
+	userService.saveUser(UserList);
 	return "redirect:/all";	
 	}
 	
@@ -53,7 +52,7 @@ public class UserController {
 	public ModelAndView updateUserById(@PathVariable(name = "id") int id)
 	{
 		ModelAndView mv = new ModelAndView("new");
-		User u = userRep.findById(id).get();
+		User u = userService.find(id);
 		mv.addObject("UserList", u);
 		return mv;
 	}
@@ -61,10 +60,9 @@ public class UserController {
 	@RequestMapping(method=RequestMethod.GET, value="/delete/{id}")
 	public String deleteUserById(@PathVariable(name = "id") int id)
 	{
-		userRep.deleteById(id);
+		userService.delete(id);
 		return "redirect:/all";
 	}
-	
 	
 
 }
